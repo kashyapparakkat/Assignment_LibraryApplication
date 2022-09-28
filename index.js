@@ -6,6 +6,8 @@ const cors = require('cors')
 const mongoose = require('mongoose')
 const db = require("./database");
 
+const port = process.env.PORT || "3000";
+
 
 
 
@@ -94,4 +96,6 @@ app.get('/*', function(req, res) {
 db()
 
 
-app.listen("3000");
+app.listen(port,()=>{
+    console.log("Server Ready on 3000");
+});
