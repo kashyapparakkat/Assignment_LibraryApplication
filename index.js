@@ -10,6 +10,7 @@ const db = require("./database");
 
 
 
+
 // load config
 // dotenv.config({ path: "./config/config.env" });
 const app = express();
@@ -17,6 +18,8 @@ const app = express();
 
 app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
+
+app.use(express.static("./dist/frontend"));
 
 const route = require('./routes/route.js')
 
@@ -39,10 +42,36 @@ app.use(cors())
 //static files
 //app.use(express.static(path.join(__dirname, 'public')))
 
-app.get('/', function (req, res) {
+/*app.get('/', function (req, res) {
     //res.sendFile(path.join(__dirname, 'build', 'index.html'));
     res.send('Server started')
+});*/
+
+/*app.get('/', function(req, res) {
+    res.header("Access-Control-Allow-Origin",'*');
+    res.header("Access-Control-Allow-method:GET,POST,PUT,DELETE");
+    res.sendFile(path.join(__dirname + '/dist/frontend/index.html'));
 });
+
+app.get('/!*', function(req, res) {
+    res.header("Access-Control-Allow-Origin",'*');
+    res.header("Access-Control-Allow-method:GET,POST,PUT,DELETE");
+    res.sendFile(path.join(__dirname + '/dist/frontend/index.html'));
+});
+
+app.get('/*', function(req, res) {
+    res.header("Access-Control-Allow-Origin",'*');
+    res.header("Access-Control-Allow-method:GET,POST,PUT,DELETE");
+    res.sendFile(path.join(__dirname + '/dist/frontend/index.html'));
+});
+
+app.get('/*', function(req, res) {
+    res.header("Access-Control-Allow-Origin",'*');
+    res.header("Access-Control-Allow-method:GET,POST,PUT,DELETE");
+    res.sendFile(path.join(__dirname + '/dist/frontend/index.html'));
+});*/
+
+
 
 
 /*app.get('/', function (req, res) {
@@ -56,6 +85,13 @@ app.get('/hi:abc', function (req, res) {
 });*/
 app.use("/api", route)
 
+app.get('/*', function(req, res) {
+    res.header("Access-Control-Allow-Origin",'*');
+    res.header("Access-Control-Allow-method:GET,POST,PUT,DELETE");
+    res.sendFile(path.join(__dirname + '/dist/frontend/index.html'));
+});
+
 db()
+
 
 app.listen("3000");
