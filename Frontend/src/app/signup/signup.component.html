@@ -1,0 +1,31 @@
+<div class="container-fluid">
+  <h3 style="text-align:center">Enrollment Form</h3>
+  <form [formGroup]="signupForm" (ngSubmit)="onsubmit()">
+
+    <label>Employee Name</label>
+    <small>
+      <input type="text" placeholder="Full Name" class="form-control" formControlName="fullname" popupHeight='200px' popupWidth = '250px'
+             [ngClass]="{'is-invalid':submit && f.fullname.errors}">
+      <div *ngIf='submit && f.fullname.errors' class="invalid-feedback">
+        <div *ngIf="f.fullname.errors?.['required']">Full Name is required</div>
+        <div *ngIf="f.fullname.errors?.['pattern']">Invalid Name</div>
+      </div>
+    </small>
+
+    <label>Email</label>
+    <input type="email" placeholder="email" class="form-control" formControlName="email" popupHeight='200px' popupWidth = '250px'>
+
+
+    <label>Password</label>
+    <input type="password" placeholder="pwd" class="form-control" formControlName="pwd" popupHeight='200px' popupWidth = '250px'>
+
+
+    <label>Mobile</label>
+    <small>
+      <input type="text" placeholder="Mobile number" class="form-control" formControlName="mobile" popupHeight='200px' popupWidth = '250px'>
+    </small>
+
+    <br>
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>

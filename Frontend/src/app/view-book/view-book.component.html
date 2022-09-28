@@ -1,0 +1,36 @@
+<div class='card'>
+  <!--  <div class='card-header'>
+      {{pageTitle}}
+    </div>-->
+
+  <div class='card-body'>
+    <div class='table-responsive'>
+      <table class='table'
+             *ngIf = 'books'>
+        <thead>
+        <tr>
+          <th>title</th>
+          <th>description</th>
+          <th>date</th>
+          <th>Author</th>
+          <th>Rate</th>
+        </tr>
+
+        </thead>
+        <tbody>
+        <tr *ngFor='let book of books'>
+          <td>{{ book.title }}</td>
+          <td>{{ book.description }}</td>
+          <td>{{ book.date }}</td>
+          <td>{{ book.author }}</td>
+          <td>{{ book.rate }}</td>
+          <td>
+            <button class="btn btn-warning" style="cursor:pointer" (click)="editBook(book)" style="margin-left: 20px;"> Edit</button>
+            <button class="btn btn-danger" style="cursor:pointer" (click)="deleteBook(book)"> Delete</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
